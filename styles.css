@@ -24,9 +24,12 @@ body {
 .header-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
+    align-items: center;
     gap: 20px;
+}
+
+.text-content {
+    flex: 1;
 }
 
 .title {
@@ -35,7 +38,7 @@ body {
     font-weight: 400;
     color: #37352f;
     letter-spacing: -0.02em;
-    flex: 1;
+    margin-bottom: 16px;
 }
 
 .join-button {
@@ -50,6 +53,7 @@ body {
     transition: background-color 0.2s ease;
     white-space: nowrap;
     border: 1px solid #37352f;
+    align-self: center;
 }
 
 .join-button:hover {
@@ -187,11 +191,16 @@ footer {
     .header-content {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 24px;
+    }
+    
+    .text-content {
+        width: 100%;
     }
     
     .title {
         font-size: 2rem;
+        margin-bottom: 12px;
     }
     
     .join-button {
