@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unplugged Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">The unplugged project</h1>
+            <p class="subtitle">
+                This should be a small description for the movement. We are building a public list of people who have quit social media. and a small reason that motivated us for it.
+            </p>
+        </header>
+        
+        <main>
+            <div class="table-container">
+                <table class="notion-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Platforms Quit</th>
+                            <th>Date Quit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Data will be loaded dynamically from MDX -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="progress-section">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0.016%"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span class="current-count">3</span>
+                        <span class="separator">/</span>
+                        <span class="total-count">19,000</span>
+                    </div>
+                </div>
+                <p class="progress-text">We are trying to reach 19000 users so that we can buy unplugged.org.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
