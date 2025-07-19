@@ -1,21 +1,44 @@
-// Dynamic data loading from JSON file
+// Dynamic data loading from MDX file
 let records = [];
 let totalTarget = 19000;
 
 async function loadData() {
   try {
-    // Try to load from JSON file first (more reliable)
-    const response = await fetch('./content/records.json');
+    // Load from MDX file
+    const response = await fetch('./content/records.mdx');
     if (response.ok) {
-      const data = await response.json();
-      records = data.records;
-      totalTarget = data.totalTarget || 19000;
-      console.log('Loaded records from JSON:', records);
+      const mdxContent = await response.text();
+      
+      // Parse the MDX content to extract the records array
+      const recordsMatch = mdxContent.match(/export const records = (\[[\s\S]*?\]);/);
+      
+      if (recordsMatch) {
+        // Extract the records array string
+        let recordsString = recordsMatch[1];
+        
+        // Clean up the string - remove newlines and extra spaces
+        recordsString = recordsString
+          .replace(/\n/g, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+        
+        // Parse the records array - now it's proper JSON format
+        try {
+          records = JSON.parse(recordsString);
+          console.log('Loaded records from MDX:', records);
+        } catch (parseError) {
+          console.error('Error parsing records from MDX:', parseError);
+          records = getFallbackData();
+        }
+      } else {
+        console.error('Could not find records in MDX file');
+        records = getFallbackData();
+      }
     } else {
-      throw new Error('JSON file not found');
+      throw new Error('MDX file not found');
     }
   } catch (error) {
-    console.error('Error loading JSON data:', error);
+    console.error('Error loading MDX data:', error);
     // Fallback to sample data
     records = getFallbackData();
   }
@@ -34,24 +57,6 @@ function getFallbackData() {
       name: "Jane Smith", 
       platformsQuit: "Twitter, TikTok",
       dateQuit: "2024-02-03"
-    },
-    {
-      id: 3,
-      name: "Mike Johnson",
-      platformsQuit: "All platforms",
-      dateQuit: "2024-01-28"
-    },
-    {
-      id: 4,
-      name: "Sarah Wilson",
-      platformsQuit: "Instagram, Snapchat",
-      dateQuit: "2024-02-10"
-    },
-    {
-      id: 5,
-      name: "David Chen",
-      platformsQuit: "Facebook, LinkedIn",
-      dateQuit: "2024-01-20"
     }
   ];
 }
