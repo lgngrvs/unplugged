@@ -43,22 +43,24 @@ body {
 
 .join-button {
     display: inline-block;
-    background-color: oklch(0.269, 0, 0);
+    background-color: #000000;
     color: #ffffff;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 500;
     font-size: 0.9rem;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
     white-space: nowrap;
-    border: 1px solid oklch(0.269, 0, 0);
+    border: 1px solid #000000;
     align-self: center;
+    cursor: pointer;
 }
 
 .join-button:hover {
-    background-color: oklch(0.4, 0, 0);
-    border-color: oklch(0.4, 0, 0);
+    background-color: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
 }
 
 .subtitle {
