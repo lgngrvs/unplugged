@@ -1,6 +1,6 @@
 // Dynamic data loading from MDX file
 let records = [];
-let totalTarget = 19000;
+let totalTarget = 10000;
 
 async function loadData() {
   try {
